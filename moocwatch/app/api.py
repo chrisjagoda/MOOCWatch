@@ -89,7 +89,7 @@ def makeApiReq(provider):
 def checkCourse(course):
     if isascii(course):
         lowcourse = course.lower()
-        if lowcourse.startswith('delete') or lowcourse.startswith('deprecated') or lowcourse.startswith('obsolete') or lowcourse.startswith('null') or lowcourse.startswith('void') or lowcourse.startswith('old') or lowcourse.startswith('course outdated') or lowcourse.startswith('outdated') or lowcourse.startswith('(abandoned)'):
+        if lowcourse.rfind(' test') or lowcourse.rfind(' demo') or lowcourse.rfind('demo ') or lowcourse.rfind('test ') or lowcourse.startswith('delete') or lowcourse.startswith('deprecated') or lowcourse.startswith('obsolete') or lowcourse.startswith('null') or lowcourse.startswith('void') or lowcourse.startswith('old') or lowcourse.startswith('course outdated') or lowcourse.startswith('outdated') or lowcourse.startswith('(abandoned)'):
             return False
         else:
             return True
