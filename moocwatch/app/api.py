@@ -89,7 +89,7 @@ def makeApiReq(provider):
 def checkCourse(course):
     if isascii(course):
         lowcourse = course.lower()
-        if lowcourse.rfind(' test') or lowcourse.rfind(' demo') or lowcourse.rfind('demo ') or lowcourse.rfind('test ') or lowcourse.startswith('delete') or lowcourse.startswith('deprecated') or lowcourse.startswith('obsolete') or lowcourse.startswith('null') or lowcourse.startswith('void') or lowcourse.startswith('old') or lowcourse.startswith('course outdated') or lowcourse.startswith('outdated') or lowcourse.startswith('(abandoned)'):
+        if lowcourse.rfind(' test') != -1 or lowcourse.rfind(' demo') != -1 or lowcourse.rfind('demo ') != -1 or lowcourse.rfind('test ') != -1 or lowcourse.rfind('delete') != -1 or lowcourse.rfind('deprecated') != -1 or lowcourse.rfind('obsolete') != -1 or lowcourse.startswith('null') or lowcourse.startswith('void') or lowcourse.startswith('old') or lowcourse.rfind('outdated') != -1 or lowcourse.rfind('(abandoned)') != -1:
             return False
         else:
             return True
@@ -98,7 +98,7 @@ def checkCourse(course):
 def addEntry(url, course, image, description, provider):
     all_entries = models.Course.objects.all()
     if not all_entries.filter(url=url):
-        uprint(str(isinstance(course, str)) + "Adding %s " % course)
+        uprint("%s Added, " % course)
         course = models.Course(url=url,
                                 course=course,
                                 image=image,
@@ -121,4 +121,4 @@ count = 1
 #    if bool == False:
 #        break
 
-# makeApiReq(providers['udemy'])
+makeApiReq(providers['udemy'])
