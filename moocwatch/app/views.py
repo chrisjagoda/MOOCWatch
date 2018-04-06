@@ -34,7 +34,6 @@ class CourseTakerViewSet(viewsets.ModelViewSet):
     def post(self, request, *args, **kwargs):
         try:
             print(self.request.user)
-            print("wfubnwufnwufnwufnwufnwufnwufnwfunw23795h2389rth289rh23489rh23895rh89")
             obj = CourseTakerSerializer.objects.create()
         except:
             return Response(status=status.HTTP_404_NOT_FOUND)
